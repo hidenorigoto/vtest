@@ -1,0 +1,10 @@
+parameters:
+    php_mentors_validator.service_callback.class: PHPMentors\ValidatorBundle\Validator\Constraints\ServiceCallbackValidator
+
+services:
+    php_mentors_validator.service_callback:
+        class: %php_mentors_validator.service_callback.class%
+        calls:
+            - [ setContainer, ["@service_container"] ]
+        tags:
+            - { name: validator.constraint_validator, alias: PHPMentorsServiceCallbackValidator }
